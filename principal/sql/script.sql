@@ -19,3 +19,10 @@ CREATE TABLE doacoes (
     FOREIGN KEY (doador_id) REFERENCES doadores(id), 
     FOREIGN KEY (instituicao_id) REFERENCES instituicoes(id) 
 );
+CREATE TABLE solicitacoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    instituicao_id INT NOT NULL,
+    data_solicitacao DATE NOT NULL,
+    observacoes TEXT,
+    FOREIGN KEY (instituicao_id) REFERENCES instituicoes(id)
+);
