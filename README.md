@@ -41,3 +41,38 @@ CREATE TABLE doacoes (
     FOREIGN KEY (instituicao_id) REFERENCES instituicoes(id) 
 );
 
+🖥️ Como Executar o Projeto Localmente
+Instale o XAMPP (ou Laragon/WAMP):
+
+Download do XAMPP
+
+Coloque o projeto na pasta htdocs:
+
+Caminho típico:
+
+makefile
+Copiar
+Editar
+C:\xampp\htdocs\plataforma-doacoes-alimentos
+Inicie os serviços Apache e MySQL no painel do XAMPP.
+
+Acesse o phpMyAdmin:
+
+http://localhost/phpmyadmin
+
+Crie um banco de dados com o nome:
+
+nginx
+Copiar
+Editar
+doacoes_db
+Importe o arquivo sql/script.sql para criar as tabelas.
+
+Acesse o sistema no navegador:
+
+Exemplo de URL:
+
+arduino
+Copiar
+Editar
+http://localhost/plataforma-doacoes-alimentos/forms/doadores_form.php
