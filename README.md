@@ -14,6 +14,19 @@ Sistema web desenvolvido em PHP com banco de dados MySQL (phpMyAdmin) para conec
 - Listagem de instituições e doadores
 - Solicitação de retirada por parte das instituições (em desenvolvimento)
 
+🖥️ Como Executar o Projeto Localmente
+
+1- Instale o XAMPP (ou Laragon/WAMP):
+2- Coloque o projeto na pasta htdocs
+3- Caminho típico: C:\xampp\htdocs\plataforma-doacoes-alimentos
+4- Inicie os serviços Apache e MySQL no painel do XAMPP
+5- Acesse o phpMyAdmin: http://localhost/phpmyadmin
+5- Crie um banco de dados com o nome: doacoes_db
+6- Copie o código sql fornecido abaixo para criar as tabelas.
+7- Acesse o sistema no navegador
+Exemplo de URL:
+http://localhost/plataforma-doacoes-alimentos/forms/doadores_form.php
+
 ## 🗃️ Estrutura do Banco de Dados
 
 Crie as tabelas utilizando o script abaixo no phpMyAdmin:
@@ -40,39 +53,3 @@ CREATE TABLE doacoes (
     FOREIGN KEY (doador_id) REFERENCES doadores(id), 
     FOREIGN KEY (instituicao_id) REFERENCES instituicoes(id) 
 );
-
-🖥️ Como Executar o Projeto Localmente
-Instale o XAMPP (ou Laragon/WAMP):
-
-Download do XAMPP
-
-Coloque o projeto na pasta htdocs:
-
-Caminho típico:
-
-makefile
-Copiar
-Editar
-C:\xampp\htdocs\plataforma-doacoes-alimentos
-Inicie os serviços Apache e MySQL no painel do XAMPP.
-
-Acesse o phpMyAdmin:
-
-http://localhost/phpmyadmin
-
-Crie um banco de dados com o nome:
-
-nginx
-Copiar
-Editar
-doacoes_db
-Importe o arquivo sql/script.sql para criar as tabelas.
-
-Acesse o sistema no navegador:
-
-Exemplo de URL:
-
-arduino
-Copiar
-Editar
-http://localhost/plataforma-doacoes-alimentos/forms/doadores_form.php
