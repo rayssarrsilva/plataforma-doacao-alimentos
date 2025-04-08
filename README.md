@@ -53,3 +53,22 @@ CREATE TABLE doacoes (
     FOREIGN KEY (doador_id) REFERENCES doadores(id), 
     FOREIGN KEY (instituicao_id) REFERENCES instituicoes(id) 
 );
+
+CREATE TABLE produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    doador_id INT,
+    nome_produto VARCHAR(255),
+    FOREIGN KEY (doador_id) REFERENCES doadores(id) ON DELETE CASCADE
+);
+
+ALTER TABLE doacoes ADD COLUMN produto_id INT, ADD FOREIGN KEY (produto_id) REFERENCES produtos(id);
+
+ALTER TABLE doadores 
+    ADD COLUMN senha VARCHAR(255) AFTER email;
+
+ALTER TABLE instituicoes 
+    ADD COLUMN email VARCHAR(255),
+    ADD COLUMN senha VARCHAR(255);
+
+ALTER TABLE doacoes ADD COLUMN status VARCHAR(20) DEFAULT 'pendente';
+
