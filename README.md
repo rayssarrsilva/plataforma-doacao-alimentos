@@ -53,3 +53,10 @@ CREATE TABLE doacoes (
     FOREIGN KEY (doador_id) REFERENCES doadores(id), 
     FOREIGN KEY (instituicao_id) REFERENCES instituicoes(id) 
 );
+
+CREATE TABLE produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    doador_id INT,
+    nome_produto VARCHAR(255),
+    FOREIGN KEY (doador_id) REFERENCES doadores(id) ON DELETE CASCADE
+);
