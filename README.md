@@ -60,3 +60,6 @@ CREATE TABLE produtos (
     nome_produto VARCHAR(255),
     FOREIGN KEY (doador_id) REFERENCES doadores(id) ON DELETE CASCADE
 );
+
+ALTER TABLE doacoes ADD COLUMN produto_id INT, ADD FOREIGN KEY (produto_id) REFERENCES produtos(id);
+
