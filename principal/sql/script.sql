@@ -26,3 +26,5 @@ CREATE TABLE solicitacoes (
     observacoes TEXT,
     FOREIGN KEY (instituicao_id) REFERENCES instituicoes(id)
 );
+ALTER TABLE doadores ADD COLUMN senha VARCHAR(255);
+ALTER TABLE instituicoes ADD COLUMN email VARCHAR(255), ADD COLUMN senha VARCHAR(255);

@@ -1,0 +1,198 @@
+/* Fonte bonita e moderna */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+    --azul: #4a90e2;
+    --azul-escuro: #2c6bb2;
+    --verde: #28a745;
+    --cinza: #f5f5f5;
+    --cinza-escuro: #555;
+    --branco: #fff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--cinza);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    color: var(--cinza-escuro);
+}
+
+/* Título principal */
+h2 {
+    color: var(--azul-escuro);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Card de formulário ou painel */
+.card {
+    background-color: var(--branco);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Botão principal */
+button {
+    background-color: var(--azul);
+    color: var(--branco);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--azul-escuro);
+}
+
+/* Links */
+a {
+    color: var(--azul-escuro);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Tabela de solicitações */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background-color: var(--branco);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+}
+
+table th {
+    background-color: var(--azul);
+    color: var(--branco);
+    font-weight: 600;
+}
+
+table tr:nth-child(even) {
+    background-color: var(--cinza);
+}
+
+/* Cores para status */
+.status-pendente {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+.status-aceito {
+    color: var(--verde);
+    font-weight: bold;
+}
+
+.status-recusado {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Ações da tabela */
+.acao-links a {
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+/* Botões de navegação */
+.link-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.link-btn {
+    background-color: var(--azul);
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    min-width: 180px;
+}
+
+.link-btn:hover {
+    background-color: var(--azul-escuro);
+}
+
+.logout-btn {
+    display: inline-block;
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    button, .link-btn, .logout-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Garantir alinhamento geral */
+* {
+    box-sizing: border-box;
+}

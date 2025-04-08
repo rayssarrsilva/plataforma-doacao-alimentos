@@ -1,4 +1,16 @@
+<link rel="stylesheet" href="../style.css">
 <?php include("../db.php"); ?>
+<?php
+session_start();
+
+$painel_url = "";
+
+if (isset($_SESSION["doador_id"])) {
+    $painel_url = "painel_doador.php";
+} elseif (isset($_SESSION["instituicao_id"])) {
+    $painel_url = "painel_instituicao.php";
+}
+?>
 
 <h2>Registrar Doação</h2>
 <form method="post">
@@ -12,17 +24,7 @@
         ?>
     </select><br>
 
-    Instituição:
-    <select name="instituicao_id" required>
-        <?php
-        $result = $conn->query("SELECT id, nome FROM instituicoes");
-        while ($row = $result->fetch_assoc()) {
-            echo "<option value='{$row['id']}'>{$row['nome']}</option>";
-        }
-        ?>
-    </select><br>
-
-    Descrição: <br>
+    Descrição(produtos a serem doados): <br>
     <textarea name="descricao" required></textarea><br>
     Data da Doação: <input type="date" name="data_doacao" required><br>
     <button type="submit">Registrar Doação</button>
@@ -31,7 +33,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $doador_id = $_POST["doador_id"];
-    $instituicao_id = $_POST["instituicao_id"];
     $descricao = $_POST["descricao"];
     $data = $_POST["data_doacao"];
 
