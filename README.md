@@ -70,4 +70,5 @@ ALTER TABLE instituicoes
     ADD COLUMN email VARCHAR(255),
     ADD COLUMN senha VARCHAR(255);
 
+ALTER TABLE doacoes ADD COLUMN status VARCHAR(20) DEFAULT 'pendente';
 
