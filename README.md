@@ -63,3 +63,11 @@ CREATE TABLE produtos (
 
 ALTER TABLE doacoes ADD COLUMN produto_id INT, ADD FOREIGN KEY (produto_id) REFERENCES produtos(id);
 
+ALTER TABLE doadores 
+    ADD COLUMN senha VARCHAR(255) AFTER email;
+
+ALTER TABLE instituicoes 
+    ADD COLUMN email VARCHAR(255),
+    ADD COLUMN senha VARCHAR(255);
+
+
