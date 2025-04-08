@@ -7,12 +7,17 @@ Sistema web desenvolvido em PHP com banco de dados MySQL (phpMyAdmin) para conec
 - **Mateus**
 
 ## 📌 Funcionalidades
-- Cadastro de doadores
-- Cadastro de instituições
-- Registro de doações associadas a doadores e instituições
-- Listagem de doações
-- Listagem de instituições e doadores
-- Solicitação de retirada por parte das instituições (em desenvolvimento)
+- ✅ Registro e login de doadores
+- ✅ Registro e login de instituições
+- ✅ Cadastro de produtos para doação (por doador logado)
+- ✅ Registro de solicitações de retirada (por instituição logada)
+- ✅ Doadores podem **aceitar ou recusar** solicitações feitas aos seus produtos
+- ✅ Listagem pública de produtos **disponíveis** para doação
+- ✅ Painel exclusivo para cada tipo de usuário
+- ✅ Controle de status das solicitações: `pendente`, `aceito`, `recusado`
+
+Versão atual: v2.0
+→ Inclui controle de login, sistema de produtos, painel de usuários e controle de status.
 
 🖥️ Como Executar o Projeto Localmente
 
@@ -32,43 +37,42 @@ http://localhost/plataforma-doacoes-alimentos/forms/doadores_form.php
 Crie as tabelas utilizando o script abaixo no phpMyAdmin:
 
 ```sql
+## 🗃️ Estrutura do Banco de Dados (SQL)
+
+```sql
 CREATE TABLE doadores ( 
-    id INT AUTO_INCREMENT PRIMARY KEY, 
-    nome VARCHAR(100) NOT NULL, 
-    email VARCHAR(100) UNIQUE NOT NULL 
+ id INT AUTO_INCREMENT PRIMARY KEY, 
+ nome VARCHAR(100) NOT NULL, 
+ email VARCHAR(100) UNIQUE NOT NULL,
+ senha VARCHAR(255) NOT NULL
 ); 
- 
+
 CREATE TABLE instituicoes ( 
-    id INT AUTO_INCREMENT PRIMARY KEY, 
-    nome VARCHAR(150) NOT NULL, 
-    endereco VARCHAR(255) NOT NULL 
+ id INT AUTO_INCREMENT PRIMARY KEY, 
+ nome VARCHAR(150) NOT NULL, 
+ endereco VARCHAR(255),
+ email VARCHAR(255) UNIQUE,
+ senha VARCHAR(255)
 ); 
- 
-CREATE TABLE doacoes ( 
-    id INT AUTO_INCREMENT PRIMARY KEY, 
-    doador_id INT, 
-    instituicao_id INT, 
-    descricao TEXT NOT NULL, 
-    data_doacao DATE NOT NULL, 
-    FOREIGN KEY (doador_id) REFERENCES doadores(id), 
-    FOREIGN KEY (instituicao_id) REFERENCES instituicoes(id) 
-);
 
 CREATE TABLE produtos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    doador_id INT,
-    nome_produto VARCHAR(255),
-    FOREIGN KEY (doador_id) REFERENCES doadores(id) ON DELETE CASCADE
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ doador_id INT,
+ nome_produto VARCHAR(255),
+ FOREIGN KEY (doador_id) REFERENCES doadores(id) ON DELETE CASCADE
 );
 
-ALTER TABLE doacoes ADD COLUMN produto_id INT, ADD FOREIGN KEY (produto_id) REFERENCES produtos(id);
+CREATE TABLE doacoes ( 
+ id INT AUTO_INCREMENT PRIMARY KEY, 
+ doador_id INT, 
+ instituicao_id INT, 
+ produto_id INT,
+ data_doacao DATE NOT NULL,
+ status VARCHAR(20) DEFAULT 'pendente',
+ FOREIGN KEY (doador_id) REFERENCES doadores(id),
+ FOREIGN KEY (instituicao_id) REFERENCES instituicoes(id),
+ FOREIGN KEY (produto_id) REFERENCES produtos(id)
+);
 
-ALTER TABLE doadores 
-    ADD COLUMN senha VARCHAR(255) AFTER email;
 
-ALTER TABLE instituicoes 
-    ADD COLUMN email VARCHAR(255),
-    ADD COLUMN senha VARCHAR(255);
-
-ALTER TABLE doacoes ADD COLUMN status VARCHAR(20) DEFAULT 'pendente';
 
